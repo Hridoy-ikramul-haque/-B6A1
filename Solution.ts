@@ -127,29 +127,30 @@ const printBookDetails = (val: Book) => {
 
 
 
-type GetUniqueValuesParam = number | string;
-const getUniqueValues = (arr1: GetUniqueValuesParam[], arr2: GetUniqueValuesParam[]): GetUniqueValuesParam[] => {
-    let combinedArr: GetUniqueValuesParam[] = [...arr1, ...arr2];
-    let uniqueArr: GetUniqueValuesParam[] = [];
-
-    const isUnique = (val: GetUniqueValuesParam) => {
-        for (let i = 0; i < uniqueArr.length; i++)
-        {
-            if (uniqueArr[i] === val) return false;
+type Arr = number | string;
+const getUniqueValues = (arr1: Arr[], arr2: Arr[]): Arr[] => {
+    const map: { [Key: string]: boolean } = {};
+    const combninedUnique: Arr[] = [];
+    for (let i = 0; i < arr1.length; i++) {
+        const key = String(arr1[i]);
+        if (!map[key]) {
+            map[key] = true;
+            combninedUnique[combninedUnique.length] = arr1[i];
         }
-        return true;
+
     }
 
-    for (let i = 0; i < combinedArr.length; i++)
-    {
-        if (isUnique(combinedArr[i]))
-        {
-            uniqueArr[uniqueArr.length] = combinedArr[i];
+    for (let i = 0; i < arr2.length; i++) {
+        const key = String(arr2[i]);
+        if (!map[key]) {
+            map[key] = true;
+            combninedUnique[combninedUnique.length] = arr2[i];
         }
+
     }
 
-    return uniqueArr;
-}
+    return combninedUnique;
+};
 
 
 

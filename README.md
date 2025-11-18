@@ -198,8 +198,7 @@ const person = {
 };
 
 console.log(getValue(person, "name")); // "Ikramul"
-console.log(getValue(person, "age"));  // 25
-
+console.log(getValue(person, "age"));  // 258
 
 // console.log(getValue(person, "country"));
 //  Error: "country" is not a key of person
